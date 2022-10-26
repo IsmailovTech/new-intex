@@ -13,6 +13,7 @@ export default function Home() {
         <link rel="icon" href={SiteLogo} />
       </Head>
       
+      
       <Header/> {/* Nurillo Headerni oldi  */}
       <Hero/> {/*Nurillo Hero oldi*/}
       <Popular/> {/*Nozimjon Популярные товары oldi*/}
