@@ -1,24 +1,34 @@
-import Image from 'next/image'
-import React from 'react'
-import BuyForm from '../ComponetntModuls/CallBtn/Forms/BuyForm'
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Image from "next/image";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import BuyForm from "../ComponetntModuls/Forms/BuyForm";
 
 const BuyAll = () => {
+  const lang = useSelector((state) => state.data.lang);
+  const languages = useSelector((state) => state.data.localization);
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <div className="w-full">
-      <div className="max-w-container w-full mx-auto my-auto sm:px-5 rounded-sectionRadius">
-        <div className="w-full md:h-520 my-10 md:my-20 flex flex-col md:flex-row items-center justify-between px-5 md:px-0 bg-gray-bg_main py-10 md:pl-10  ">
+    <div id="optom" className="w-full">
+      <div className="max-w-container w-full mx-auto my-auto sm:px-4 ">
+        <div className="w-full md:h-520 my-10 md:my-36 flex flex-col md:flex-row items-center justify-between px-5 md:px-0 rounded-sectionRadius bg-gray-bg_main py-10 md:pl-10  ">
           <div className="">
-            <h2 className=" text-lg sm:text-3xl md:text-32 font-bold leading-9">
-              Купить оптом
+            <h2 className="text-lg sm:text-3xl md:text-32 font-bold leading-9">
+              {languages[lang].buyAll.heading}
             </h2>
+
             <p className="max-w-403 text-sm md:text-base text-gray-foot leading-5 mt-4 pb-6 sm:pb-8 ">
-              Если вы хотите купить товары по оптовой цене, вы должны заказать
-              не менее 20 товаров.
+              {languages[lang].buyAll.text}
             </p>
-            <div className="block md:hidden max-w-362 w-full ">
-              
+            <div className=" md:hidden w-full flex items-center justify-center layout">
               <Image
-                src={'/Assets/Images/KarkasHero1.png'}
+                className="w-335 h-207"
+                src={"/Assets/Images/KarkasHero1.png"}
                 alt="Picture of the Karkas"
                 width={335}
                 height={202}
@@ -30,7 +40,8 @@ const BuyAll = () => {
           </div>
           <div className="hidden md:block ml-4 lg:ml-0">
             <Image
-              src={'/Assets/Images/KarkasHero.png'}
+              className="w-600 max-h-380"
+              src={"/Assets/Images/KarkasHero.png"}
               alt="Picture of the Karkas"
               width={628}
               height={380}
@@ -40,7 +51,7 @@ const BuyAll = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BuyAll
+export default BuyAll;
